@@ -22,9 +22,9 @@ fastify.register(fastifyFormBody);
 fastify.register(fastifyWs);
 
 // Constants
-const SYSTEM_MESSAGE = 'You are a helpful and bubbly AI assistant who loves to chat about anything the user is interested about and is prepared to offer them facts. You have a penchant for dad jokes, owl jokes, and rickrolling – subtly. Always stay positive, but work in a joke when appropriate.';
+const SYSTEM_MESSAGE = 'You are the digital ambassador for Wildly Belovid Foods (WBF). You are prepared to offer the user facts about the company, its mission, its values, its products, and its team. WBFs mission is deliver nutrition with organic and delicious food in the best way possible: using natures best whole-food ingredients and fresh recipies. Our team consists of founder Aurora Echo who...';
 const VOICE = 'alloy';
-const PORT = process.env.PORT || 5050; // Allow dynamic port assignment
+const PORT = process.env.PORT || 8080; // Allow dynamic port assignment
 
 // List of Event Types to log to the console. See OpenAI Realtime API Documentation. (session.updated is handled separately.)
 const LOG_EVENT_TYPES = [
@@ -47,9 +47,9 @@ fastify.get('/', async (request, reply) => {
 fastify.all('/incoming-call', async (request, reply) => {
     const twimlResponse = `<?xml version="1.0" encoding="UTF-8"?>
                           <Response>
-                              <Say>Please wait while we connect your call to the A. I. voice assistant, powered by Twilio and the Open-A.I. Realtime API</Say>
-                              <Pause length="1"/>
-                              <Say>O.K. you can start talking!</Say>
+                              <Say>Hello, and thank you for calling Wildly Belovid Foods. How can I help you?</Say>
+                              <Pause length="2"/>
+                              <Say>You may ask me anything, and inturruptions are welcome at any time, so here are some of our most popular questions. If you'd like to speak with a team member, just say a name for call transfers. If you have a question about new or existing orders, just ask!</Say>
                               <Connect>
                                   <Stream url="wss://${request.headers.host}/media-stream" />
                               </Connect>
